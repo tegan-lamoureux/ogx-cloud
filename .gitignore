@@ -1,0 +1,9 @@
+.vscode/
+bin/
+*.pcap
+*.old
+*.d
+*.obj
+*.exe
+*.iso
+
