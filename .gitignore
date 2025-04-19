@@ -6,4 +6,5 @@ bin/
 *.obj
 *.exe
 *.iso
+*.lib
 

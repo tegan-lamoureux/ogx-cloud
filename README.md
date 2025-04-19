@@ -14,7 +14,6 @@ See:
 * https://www.ogxbox.com/
 * xbox-scene on discord
 
-
 ## What is the current state?
 Garbage lol. It connects to a remote FTP server and lists the files / directories. Renders a static background, and can draw text. Development is ongoing.
 
@@ -26,7 +25,7 @@ Built with [NXDK](https://github.com/XboxDev/nxdk), and a forked (and modified +
 See: https://github.com/gezedo/lwftp and relevant copyright notices in the library headers.
 
 ## Building
-1. Get a copy of [NXDK](https://github.com/XboxDev/nxdk), unpack  
+1. Get a copy of [NXDK](https://github.com/XboxDev/nxdk), unpack next to this repo (or wherever you want, and modify `NXDK_DIR` in the Makefile)  
 2. Source `nxdk/bin/activate` to prep the terminal environment  
 3. `make`, and then copy over the iso or .xbe and run :)  
 
