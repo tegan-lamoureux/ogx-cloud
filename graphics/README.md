@@ -1,0 +1,1 @@
+Raw images and elements in native [GIMP](https://www.gimp.org/) format, used to construct the UI.
