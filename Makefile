@@ -1,6 +1,6 @@
 XBE_TITLE = ogxcloud
 GEN_XISO = $(XBE_TITLE).iso
-SRCS = $(CURDIR)/src/main.c $(CURDIR)/src/lwftp/lwftp.c
+SRCS = $(CURDIR)/src/main.c $(CURDIR)/src/lwftp/lwftp.c $(CURDIR)/src/ogxc_ttf/ogxc_ttf.c
 NXDK_DIR ?= $(CURDIR)/../nxdk/
 NXDK_NET = y
 NXDK_SDL = y
