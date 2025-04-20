@@ -1,5 +1,7 @@
 # OGX-Cloud
-A manager for cloud-based game libraries, for the Original Xbox. 
+A manager for cloud-based game libraries, for the Original Xbox.  
+
+![current_status](https://raw.githubusercontent.com/tegan-lamoureux/ogx-cloud/refs/heads/main/graphics/current_status_screenshot.png "screenshot")  
 
 ## What is it?
 A game manager that allows you to sync games from a remote / cloud server to your (modded) OG Xbox's hard drive, with Xbox-local data integrity verification using MD5 hashes from the server. 
@@ -16,8 +18,6 @@ See:
 
 ## What is the current state?
 Garbage lol. It connects to a remote FTP server and lists the files / directories. Renders a static background, and can draw text. Development is ongoing.
-
-![current_status](https://raw.githubusercontent.com/tegan-lamoureux/ogx-cloud/refs/heads/main/resources/current_status.png "screenshot")
 
 ## What technologies does it use?
 Built with [NXDK](https://github.com/XboxDev/nxdk), and a forked (and modified + extended) version of a lightweight FTP client built for LWIP. 
