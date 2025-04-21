@@ -34,6 +34,11 @@ See the `ogx-cloud/lib` folder. :)
 2. Source `nxdk/bin/activate` to prep the terminal environment  
 3. `make`, and then copy over the iso or .xbe and run!!
 
+My typical workflow includes the `format` make target, which lints with clang-format, and launches the iso locally for [emulation via xemu](https://xemu.app/). I push to my xbox more rarely, for larger feature checks. 
+
+Example:  
+`make format && make && xemu -dvd_path ./ogxcloud.iso`
+
 ## TODO (In order of priority)
 - [ ] Update / finalize changes to FTP client to handle needs (dir list, download large multi-chunk files)  
 - [X] Graphical UI  

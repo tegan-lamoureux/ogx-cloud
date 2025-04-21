@@ -13,6 +13,7 @@
 #include <windows.h>
 
 #include "../lib/lwftp/lwftp.h"
+#include "../lib/ogxc_osk/ogxc_osk.h"
 #include "../lib/ogxc_ttf/ogxc_ttf.h"
 
 typedef enum
@@ -62,7 +63,7 @@ int main(void)
     int done = 0;
     SDL_Window *window;
     SDL_Event event;
-    SDL_Surface *screenSurface, *imageSurface;
+    SDL_Surface *screen_surface, *image_surface;
 
     void *vm_p = 0;
     VIDEO_MODE vm;
@@ -104,25 +105,28 @@ int main(void)
         printIMGErrorAndReboot();
     }
 
-    screenSurface = SDL_GetWindowSurface(window);
-    if (!screenSurface)
+    screen_surface = SDL_GetWindowSurface(window);
+    if (!screen_surface)
     {
         SDL_VideoQuit();
         printSDLErrorAndReboot();
     }
 
-    imageSurface = IMG_Load("D:\\bg_720_480.jpg");
-    if (!imageSurface)
+    image_surface = IMG_Load("D:\\bg_720_480.jpg");
+    if (!image_surface)
     {
         SDL_VideoQuit();
         printIMGErrorAndReboot();
     }
 
-    ogxc_ttf_init("D:\\vegur-regular.ttf", window, screenSurface);
+    // Library initializations
+    ogxc_ttf_init("D:\\vegur-regular.ttf", window, screen_surface);
+    ogxc_osk_init("D:\\vegur-regular.ttf", window, screen_surface);
+
     SDL_Color font_color = {0x7F, 0xFF, 0x7F, 0xFF};
 
     // Draw main background
-    SDL_BlitSurface(imageSurface, NULL, screenSurface, NULL);
+    SDL_BlitSurface(image_surface, NULL, screen_surface, NULL);
     SDL_UpdateWindowSurface(window);
 
     // Move these to header / consts
@@ -133,6 +137,10 @@ int main(void)
 
     ogxc_ttf_write("OGX Cloud - v0.1", header_main_x, header_main_y, &font_color, 18);
     ogxc_ttf_write("Connected! (FTP) : 192.168.0.218:21", header_online_x, header_online_y, &font_color, 18);
+    ogxc_ttf_write("test test test test test test test test test test test test test test", 65, 200, &font_color, 18);
+
+    char test[256] = {0};
+    ogxc_osk_launch(&test);
 
     while (!done)
     {
