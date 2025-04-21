@@ -43,7 +43,7 @@ int ogxc_ttf_init(const char* font_path, SDL_Window *window, SDL_Surface* surfac
     return 0;
 }
 
-int ogxc_ttf_write(const char* text, const int x, const int y, const SDL_Color font_color, const int font_size)
+int ogxc_ttf_write(const char* text, const int x, const int y, const SDL_Color* font_color, const int font_size)
 {
     SDL_Texture *texture = NULL;
     SDL_Rect outputPosition;

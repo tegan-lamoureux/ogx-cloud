@@ -131,8 +131,8 @@ int main(void)
     const int header_online_x = 380;
     const int header_online_y = 22;
 
-    ogxc_ttf_write("OGX Cloud - v0.1", header_main_x, header_main_y, font_color, 18);
-    ogxc_ttf_write("Connected! (FTP) : 192.168.0.218:21", header_online_x, header_online_y, font_color, 18);
+    ogxc_ttf_write("OGX Cloud - v0.1", header_main_x, header_main_y, &font_color, 18);
+    ogxc_ttf_write("Connected! (FTP) : 192.168.0.218:21", header_online_x, header_online_y, &font_color, 18);
 
     while (!done)
     {
