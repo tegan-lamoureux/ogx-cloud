@@ -1,6 +1,13 @@
 XBE_TITLE = ogxcloud
 GEN_XISO = $(XBE_TITLE).iso
-SRCS = $(CURDIR)/src/main.c $(CURDIR)/src/lwftp/lwftp.c $(CURDIR)/src/ogxc_ttf/ogxc_ttf.c
+SRCS = \
+	$(CURDIR)/src/main.c \
+	$(CURDIR)/src/lwftp/lwftp.c \
+	$(CURDIR)/src/ogxc_ttf/ogxc_ttf.c
+FORMAT_SRCS = \
+	$(SRCS) \
+	$(CURDIR)/src/lwftp/lwftp.h \
+	$(CURDIR)/src/ogxc_ttf/ogxc_ttf.h
 NXDK_DIR ?= $(CURDIR)/../nxdk/
 NXDK_NET = y
 NXDK_SDL = y
@@ -17,3 +24,6 @@ $(OUTPUT_DIR)/bg_720_480.jpg: $(CURDIR)/resources/bg_720_480.jpg $(OUTPUT_DIR)
 cp_font:
 	@mkdir -p $(OUTPUT_DIR)
 	cp resources/vegur-regular.ttf $(OUTPUT_DIR)/
+
+format:
+	clang-format --style="Microsoft" -i $(FORMAT_SRCS)

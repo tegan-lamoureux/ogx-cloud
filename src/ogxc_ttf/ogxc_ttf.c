@@ -11,14 +11,14 @@ static TTF_Font *font = 0;
 static SDL_Window *drawWindow = 0;
 static char font_file[128] = {0};
 
-int ogxc_ttf_init(const char* font_path, SDL_Window *window, SDL_Surface* surface)
+int ogxc_ttf_init(const char* font_path, SDL_Window* window, SDL_Surface* surface)
 {
     int ret = 0;
 
     if (surface && window && font_path)
     {
         screenSurface = surface;
-        drawWindow = window; 
+        drawWindow = window;
     }
     else
         return 1;
