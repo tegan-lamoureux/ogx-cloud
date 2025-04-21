@@ -120,8 +120,8 @@ int main(void)
     }
 
     // Library initializations
-    ogxc_ttf_init("D:\\vegur-regular.ttf", window, screen_surface);
-    ogxc_osk_init("D:\\vegur-regular.ttf", window, screen_surface);
+    ogxc_ttf_init("D:\\vegur-regular.ttf", window, screen_surface, 18);
+    ogxc_osk_init("D:\\vegur-regular.ttf", window, screen_surface, 18);
 
     SDL_Color font_color = {0x7F, 0xFF, 0x7F, 0xFF};
 
@@ -135,9 +135,9 @@ int main(void)
     const int header_online_x = 380;
     const int header_online_y = 22;
 
-    ogxc_ttf_write("OGX Cloud - v0.1", header_main_x, header_main_y, &font_color, 18);
-    ogxc_ttf_write("Connected! (FTP) : 192.168.0.218:21", header_online_x, header_online_y, &font_color, 18);
-    ogxc_ttf_write("test test test test test test test test test test test test test test", 65, 200, &font_color, 18);
+    ogxc_ttf_write("OGX Cloud - v0.1", header_main_x, header_main_y, &font_color);
+    ogxc_ttf_write("Connected! (FTP) : 192.168.0.218:21", header_online_x, header_online_y, &font_color);
+    ogxc_ttf_write("test test test test test test test test test test test test test test", 65, 200, &font_color);
 
     char test[256] = {0};
     ogxc_osk_launch(&test);

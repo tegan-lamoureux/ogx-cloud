@@ -23,7 +23,7 @@ extern "C"
      * @param window Window to draw the keyboard on
      * @returns 0 if success, or non-zero on failure
      */
-    int ogxc_osk_init(const char *font_path, SDL_Window *window, SDL_Surface *surface);
+    int ogxc_osk_init(const char *font_path, SDL_Window *window, SDL_Surface *surface, const int font_size);
 
     /**
      * @brief Draws the keyboard, returns (removes from screen) with a press of

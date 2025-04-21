@@ -11,8 +11,9 @@ static TTF_Font *font = 0;
 static SDL_Window *draw_window = 0;
 static char font_file[128] = {0};
 static int init_once = 0;
+static int render_once = 0;
 
-int ogxc_ttf_init(const char *font_path, SDL_Window *window, SDL_Surface *surface)
+int ogxc_ttf_init(const char *font_path, SDL_Window *window, SDL_Surface *surface, const int font_size)
 {
     int ret = 0;
 
@@ -45,26 +46,25 @@ int ogxc_ttf_init(const char *font_path, SDL_Window *window, SDL_Surface *surfac
             debugPrint("CreateRenderer failed: %s\n", SDL_GetError());
             return 1;
         }
+
+        font = TTF_OpenFont(font_file, font_size);
+        if (font == NULL)
+        {
+            debugPrint("Couldn't load font: %s", TTF_GetError());
+            return 1;
+        }
     }
 
     return 0;
 }
 
-int ogxc_ttf_write(const char *text, const int x, const int y, const SDL_Color *font_color, const int font_size)
+// TODO: Too slow still, split out rendering to second step in second set of functions
+int ogxc_ttf_write(const char *text, const int x, const int y, const SDL_Color *font_color)
 {
     SDL_Texture *texture = NULL;
     SDL_Rect output_position;
 
-    // move this to init??
-    font = TTF_OpenFont(font_file, font_size);
-    if (font == NULL)
-    {
-        debugPrint("Couldn't load font: %s", TTF_GetError());
-        return 1;
-    }
-
     screen_surface = TTF_RenderText_Blended(font, text, *font_color);
-    TTF_CloseFont(font);
     if (screen_surface == NULL)
     {
         debugPrint("TTF_RenderText failed: %s", TTF_GetError());
@@ -88,4 +88,9 @@ int ogxc_ttf_write(const char *text, const int x, const int y, const SDL_Color *
     SDL_RenderPresent(renderer);
 
     return 0;
+}
+
+void ogxc_ttf_close()
+{
+    TTF_CloseFont(font);
 }

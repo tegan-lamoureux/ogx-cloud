@@ -125,14 +125,14 @@ static void draw_bg(void)
 
     // render keyboard map
     for (int key = 0; key < LOWER_KB_MAP_SIZE; key++)
-        ogxc_ttf_write(lower_kb_map[key].c, lower_kb_map[key].x, lower_kb_map[key].y, &kb_font_color, 18);
+        ogxc_ttf_write(lower_kb_map[key].c, lower_kb_map[key].x, lower_kb_map[key].y, &kb_font_color);
     for (int key = 0; key < UPPER_KB_MAP_SIZE; key++)
-        ogxc_ttf_write(upper_kb_map[key].c, upper_kb_map[key].x, upper_kb_map[key].y, &kb_font_color, 18);
+        ogxc_ttf_write(upper_kb_map[key].c, upper_kb_map[key].x, upper_kb_map[key].y, &kb_font_color);
 }
 
 static void draw_text(void)
 {
-    ogxc_ttf_write("sdsafgdsaf", 1, 1, &kb_font_color, 18);
+    ogxc_ttf_write("sdsafgdsaf", 1, 1, &kb_font_color);
 }
 
 static void update_string(const char update)
@@ -141,7 +141,7 @@ static void update_string(const char update)
 
 // Public
 
-int ogxc_osk_init(const char *font_path, SDL_Window *window, SDL_Surface *surface)
+int ogxc_osk_init(const char *font_path, SDL_Window *window, SDL_Surface *surface, const int font_size)
 {
     int ret = 0;
 
@@ -153,7 +153,7 @@ int ogxc_osk_init(const char *font_path, SDL_Window *window, SDL_Surface *surfac
     else
         return 1;
 
-    if (ogxc_ttf_init(font_path, window, surface) != 0)
+    if (ogxc_ttf_init(font_path, window, surface, 18) != 0)
         return 1;
 
     background_surface = IMG_Load("D:\\bg_osk.png");
