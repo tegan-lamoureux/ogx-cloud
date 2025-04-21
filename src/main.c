@@ -12,8 +12,8 @@
 #include <stdio.h>
 #include <windows.h>
 
-#include "lwftp/lwftp.h"
-#include "ogxc_ttf/ogxc_ttf.h"
+#include "../lib/lwftp/lwftp.h"
+#include "../lib/ogxc_ttf/ogxc_ttf.h"
 
 typedef enum
 {

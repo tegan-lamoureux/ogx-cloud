@@ -24,14 +24,19 @@ Built with [NXDK](https://github.com/XboxDev/nxdk), and a forked (and modified +
 
 See: https://github.com/gezedo/lwftp and relevant copyright notices in the library headers.
 
+### Modularity
+Most of the code was written to be as modular as possible. The FTP library, TTF Font rendering, and On Screen Keyboard are all able to be directly used in any other project.
+
+See the `ogx-cloud/lib` folder. :)
+
 ## Building
 1. Get a copy of [NXDK](https://github.com/XboxDev/nxdk), unpack next to this repo (or wherever you want, and modify `NXDK_DIR` in the Makefile)  
 2. Source `nxdk/bin/activate` to prep the terminal environment  
-3. `make`, and then copy over the iso or .xbe and run :)  
+3. `make`, and then copy over the iso or .xbe and run!!
 
 ## TODO (In order of priority)
 - [ ] Update / finalize changes to FTP client to handle needs (dir list, download large multi-chunk files)  
-- [ ] Graphical UI  
+- [X] Graphical UI  
 - [ ] On screen keyboard  
 - [ ] MD5 library  
 - [ ] NXDK CI, build binary/iso on release tags  

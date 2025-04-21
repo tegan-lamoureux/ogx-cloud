@@ -55,7 +55,7 @@ int ogxc_ttf_write(const char* text, const int x, const int y, const SDL_Color* 
         return 1;
     }
 
-    screenSurface = TTF_RenderText_Blended(font, text, font_color);
+    screenSurface = TTF_RenderText_Blended(font, text, *font_color);
     TTF_CloseFont(font);
     if (screenSurface == NULL)
     {

@@ -1,1 +1,0 @@
-Font and text rendering, basic.

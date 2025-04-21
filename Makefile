@@ -2,12 +2,12 @@ XBE_TITLE = ogxcloud
 GEN_XISO = $(XBE_TITLE).iso
 SRCS = \
 	$(CURDIR)/src/main.c \
-	$(CURDIR)/src/lwftp/lwftp.c \
-	$(CURDIR)/src/ogxc_ttf/ogxc_ttf.c
+	$(CURDIR)/lib/lwftp/lwftp.c \
+	$(CURDIR)/lib/ogxc_ttf/ogxc_ttf.c
 FORMAT_SRCS = \
 	$(SRCS) \
-	$(CURDIR)/src/lwftp/lwftp.h \
-	$(CURDIR)/src/ogxc_ttf/ogxc_ttf.h
+	$(CURDIR)/lib/lwftp/lwftp.h \
+	$(CURDIR)/lib/ogxc_ttf/ogxc_ttf.h
 NXDK_DIR ?= $(CURDIR)/../nxdk/
 NXDK_NET = y
 NXDK_SDL = y
