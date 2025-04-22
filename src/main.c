@@ -137,7 +137,7 @@ int main(void)
 
     ogxc_ttf_write("OGX Cloud - v0.1", header_main_x, header_main_y, &font_color);
     ogxc_ttf_write("Connected! (FTP) : 192.168.0.218:21", header_online_x, header_online_y, &font_color);
-    ogxc_ttf_write("test test test test test test test test test test test test test test", 65, 200, &font_color);
+    // ogxc_ttf_write("test test test test test test test test test test test test test test", 65, 200, &font_color);
 
     char test[256] = {0};
     ogxc_osk_launch(&test);

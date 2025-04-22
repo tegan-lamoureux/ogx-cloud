@@ -37,8 +37,8 @@ extern "C"
      * many times to queue text. To finalize and draw all the pending writes to the window,
      * call @ref ogxc_ttf_fast_write_flush().
      *
-     * Can be much faster when many quick small writes are required, or when you want to sync the 
-     * drawing of text across the framebuffer. 
+     * Can be much faster when many quick small writes are required, or when you want to sync the
+     * drawing of text across the framebuffer.
      */
     int ogxc_ttf_fast_write(const char *text, const int x, const int y, const SDL_Color *font_color);
 
