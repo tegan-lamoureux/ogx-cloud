@@ -33,6 +33,23 @@ extern "C"
     int ogxc_ttf_write(const char *text, const int x, const int y, const SDL_Color *font_color);
 
     /**
+     * @brief Identical to @ref ogxc_ttf_write(), but does not render to the screen. Can be called
+     * many times to queue text. To finalize and draw all the pending writes to the window,
+     * call @ref ogxc_ttf_fast_write_flush().
+     *
+     * Can be much faster when many quick small writes are required, or when you want to sync the 
+     * drawing of text across the framebuffer. 
+     */
+    int ogxc_ttf_fast_write(const char *text, const int x, const int y, const SDL_Color *font_color);
+
+    /**
+     * @brief Flush and render silent writes made by @ref ogxc_ttf_fast_write() to the window.
+     *
+     * @returns 0 on success, non-zero on failure
+     */
+    int ogxc_ttf_fast_write_flush();
+
+    /**
      * @brief Uninit ttf lib (free mem from font, etc)
      */
     void ogxc_ttf_close();

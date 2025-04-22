@@ -58,7 +58,6 @@ int ogxc_ttf_init(const char *font_path, SDL_Window *window, SDL_Surface *surfac
     return 0;
 }
 
-// TODO: Too slow still, split out rendering to second step in second set of functions
 int ogxc_ttf_write(const char *text, const int x, const int y, const SDL_Color *font_color)
 {
     SDL_Texture *texture = NULL;
@@ -88,6 +87,39 @@ int ogxc_ttf_write(const char *text, const int x, const int y, const SDL_Color *
     SDL_RenderPresent(renderer);
 
     return 0;
+}
+
+int ogxc_ttf_fast_write(const char *text, const int x, const int y, const SDL_Color *font_color)
+{
+    SDL_Texture *texture = NULL;
+    SDL_Rect output_position;
+
+    screen_surface = TTF_RenderText_Blended(font, text, *font_color);
+    if (screen_surface == NULL)
+    {
+        debugPrint("TTF_RenderText failed: %s", TTF_GetError());
+        return 1;
+    }
+
+    texture = SDL_CreateTextureFromSurface(renderer, screen_surface);
+    SDL_FreeSurface(screen_surface);
+    if (texture == NULL)
+    {
+        debugPrint("Couldn't create texture: %s\n", SDL_GetError());
+        return 1;
+    }
+
+    SDL_QueryTexture(texture, NULL, NULL, &output_position.w, &output_position.h);
+    output_position.x = x;
+    output_position.y = y;
+
+    SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
+    SDL_RenderCopy(renderer, texture, NULL, &output_position);
+}
+
+int ogxc_ttf_fast_write_flush()
+{
+    SDL_RenderPresent(renderer);
 }
 
 void ogxc_ttf_close()

@@ -125,9 +125,11 @@ static void draw_bg(void)
 
     // render keyboard map
     for (int key = 0; key < LOWER_KB_MAP_SIZE; key++)
-        ogxc_ttf_write(lower_kb_map[key].c, lower_kb_map[key].x, lower_kb_map[key].y, &kb_font_color);
+        ogxc_ttf_fast_write(lower_kb_map[key].c, lower_kb_map[key].x, lower_kb_map[key].y, &kb_font_color);
     for (int key = 0; key < UPPER_KB_MAP_SIZE; key++)
-        ogxc_ttf_write(upper_kb_map[key].c, upper_kb_map[key].x, upper_kb_map[key].y, &kb_font_color);
+        ogxc_ttf_fast_write(upper_kb_map[key].c, upper_kb_map[key].x, upper_kb_map[key].y, &kb_font_color);
+
+    ogxc_ttf_fast_write_flush();
 }
 
 static void draw_text(void)
