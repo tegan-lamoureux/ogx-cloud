@@ -12,10 +12,6 @@ static SDL_Window *draw_window = 0;
 static char final_string[256] = {0};
 static SDL_Color kb_font_color = {0x7F, 0xFF, 0x7F, 0xFF};
 
-//  q w e r t y u i o p
-//  a s d f g h j k l /
-//  z x c v b n m . : \ 
-
 /**
  * @brief Keyboard element, contains a character to display,
  * x and y draw position, and x and y grid index
@@ -42,11 +38,19 @@ typedef struct
 #define LKB_MAP_ROW_2_X 140
 #define LKB_MAP_ROW_3_X 140
 #define LKB_MAP_ROW_4_X 140
+#define LKB_MAP_ROW_5_X 140
+#define LKB_MAP_ROW_6_X 140
+#define LKB_MAP_ROW_7_X 140
+#define LKB_MAP_ROW_8_X 140
 
 #define LKB_MAP_ROW_1_Y 175
 #define LKB_MAP_ROW_2_Y 200
 #define LKB_MAP_ROW_3_Y 225
 #define LKB_MAP_ROW_4_Y 250
+#define LKB_MAP_ROW_5_Y 275
+#define LKB_MAP_ROW_6_Y 300
+#define LKB_MAP_ROW_7_Y 325
+#define LKB_MAP_ROW_8_Y 350
 
 #define UKB_MAP_ROW_1_X 140
 #define UKB_MAP_ROW_1_Y 285
@@ -95,9 +99,6 @@ static kb_elem kb_map[KB_MAP_SIZE] = {
     {126, (LKB_MAP_ROW_2_X + (15 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_2_Y, 15, 1},
 
     // lower case block 97-122
-    // 113 119 101 114 116 121 117 105 111 112 
-    //  97 115 100 102 103 104 106 107 108 
-    // 122 120  99 118  98 110 109
     { 113, (LKB_MAP_ROW_3_X + ( 0 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_3_Y,  0, 2},
     { 119, (LKB_MAP_ROW_3_X + ( 1 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_3_Y,  1, 2},
     { 101, (LKB_MAP_ROW_3_X + ( 2 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_3_Y,  2, 2},
@@ -117,7 +118,45 @@ static kb_elem kb_map[KB_MAP_SIZE] = {
     { 104, (LKB_MAP_ROW_4_X + ( 5 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_4_Y,  5, 3},
     { 106, (LKB_MAP_ROW_4_X + ( 6 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_4_Y,  6, 3},
     { 107, (LKB_MAP_ROW_4_X + ( 7 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_4_Y,  7, 3},
-    { 108, (LKB_MAP_ROW_4_X + ( 8 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_4_Y,  8, 3}
+    { 108, (LKB_MAP_ROW_4_X + ( 8 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_4_Y,  8, 3},
+
+    { 122, (LKB_MAP_ROW_5_X + ( 0 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_5_Y,  0, 3},
+    { 120, (LKB_MAP_ROW_5_X + ( 1 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_5_Y,  1, 3},
+    {  99, (LKB_MAP_ROW_5_X + ( 2 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_5_Y,  2, 3},
+    { 118, (LKB_MAP_ROW_5_X + ( 3 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_5_Y,  3, 3},
+    {  98, (LKB_MAP_ROW_5_X + ( 4 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_5_Y,  4, 3},
+    { 110, (LKB_MAP_ROW_5_X + ( 5 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_5_Y,  5, 3},
+    { 109, (LKB_MAP_ROW_5_X + ( 6 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_5_Y,  6, 3},
+
+    // upper case block 97-122
+    {  81, (LKB_MAP_ROW_6_X + ( 0 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_6_Y,  0, 4},
+    {  87, (LKB_MAP_ROW_6_X + ( 1 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_6_Y,  1, 4},
+    {  69, (LKB_MAP_ROW_6_X + ( 2 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_6_Y,  2, 4},
+    {  82, (LKB_MAP_ROW_6_X + ( 3 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_6_Y,  3, 4},
+    {  84, (LKB_MAP_ROW_6_X + ( 4 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_6_Y,  4, 4},
+    {  89, (LKB_MAP_ROW_6_X + ( 5 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_6_Y,  5, 4},
+    {  85, (LKB_MAP_ROW_6_X + ( 6 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_6_Y,  6, 4},
+    {  73, (LKB_MAP_ROW_6_X + ( 7 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_6_Y,  7, 4},
+    {  79, (LKB_MAP_ROW_6_X + ( 8 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_6_Y,  8, 4},
+    {  80, (LKB_MAP_ROW_6_X + ( 9 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_6_Y,  9, 4},
+
+    {  65, (LKB_MAP_ROW_7_X + ( 0 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_7_Y,  0, 5},
+    {  83, (LKB_MAP_ROW_7_X + ( 1 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_7_Y,  1, 5},
+    {  68, (LKB_MAP_ROW_7_X + ( 2 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_7_Y,  2, 5},
+    {  70, (LKB_MAP_ROW_7_X + ( 3 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_7_Y,  3, 5},
+    {  71, (LKB_MAP_ROW_7_X + ( 4 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_7_Y,  4, 5},
+    {  72, (LKB_MAP_ROW_7_X + ( 5 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_7_Y,  5, 5},
+    {  74, (LKB_MAP_ROW_7_X + ( 6 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_7_Y,  6, 5},
+    {  75, (LKB_MAP_ROW_7_X + ( 7 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_7_Y,  7, 5},
+    {  76, (LKB_MAP_ROW_7_X + ( 8 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_7_Y,  8, 5},
+
+    {  90, (LKB_MAP_ROW_8_X + ( 0 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_8_Y,  0, 6},
+    {  88, (LKB_MAP_ROW_8_X + ( 1 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_8_Y,  1, 6},
+    {  67, (LKB_MAP_ROW_8_X + ( 2 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_8_Y,  2, 6},
+    {  86, (LKB_MAP_ROW_8_X + ( 3 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_8_Y,  3, 6},
+    {  66, (LKB_MAP_ROW_8_X + ( 4 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_8_Y,  4, 6},
+    {  78, (LKB_MAP_ROW_8_X + ( 5 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_8_Y,  5, 6},
+    {  77, (LKB_MAP_ROW_8_X + ( 6 * KB_MAP_ROW_PAD)), LKB_MAP_ROW_8_Y,  6, 6}
 };
 // clang-format on
 
