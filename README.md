@@ -1,10 +1,14 @@
 # OGX-Cloud
-A manager for cloud-based game libraries, for the Original Xbox.  
+A manager for cloud-based game libraries, for the Original Xbox. 
+
+Built using the [NXDK](https://github.com/XboxDev/nxdk) toolchain, it uses no proprietary code or Microsoft dependencies, and is entirely open source and legal to use.  
 
 ![current_status](https://raw.githubusercontent.com/tegan-lamoureux/ogx-cloud/refs/heads/main/graphics/current_status_screenshot.png "screenshot")  
 
 ## What is it?
-A game manager that allows you to sync games from a remote / cloud server to your (modded) OG Xbox's hard drive, with Xbox-local data integrity verification using MD5 hashes from the server. 
+A game library manager that allows you to sync games from your remote / cloud server to your (modded) OG Xbox's hard drive, with Xbox-local data integrity verification using MD5 hashes from the server.  
+
+The server must have FTP access enabled, and a formatted library (each game in its own folder, with a ogxc config file). A formatting script in `tools/server_format` can do this for you! The config file just contains a metadata tag for the library, a list of files in the game directory, and their corresponding MD5 hash.
 
 It's mostly just a passion project of mine.
 
@@ -20,7 +24,7 @@ See:
 Garbage lol. It connects to a remote FTP server and lists the files / directories. Renders a static background, and can draw text. Development is ongoing.
 
 ## What technologies does it use?
-Built with [NXDK](https://github.com/XboxDev/nxdk), and a forked (and modified + extended) version of a lightweight FTP client built for LWIP. 
+[NXDK](https://github.com/XboxDev/nxdk), and a forked (and modified + extended) version of a lightweight FTP client built for LWIP. 
 
 See: https://github.com/gezedo/lwftp and relevant copyright notices in the library headers.
 
