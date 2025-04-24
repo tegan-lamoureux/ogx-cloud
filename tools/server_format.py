@@ -41,16 +41,39 @@ if not go:
     exit(0)
 print ("\n")
 
-start_path = "."
+start_path = os.getcwd()
 for game in os.listdir(start_path):
     print("Processing: " + game)
 
-    for file in os.listdir(os.path.join(start_path, game)):
-        full_file_path = os.path.join(start_path, game, file)
+    metadata_file = os.path.join(start_path, game, "game.ogxc")
+    meta_metadata_file = os.path.join(start_path, game, "game.ogxc.md5")
 
-        if os.path.isfile(full_file_path):
-            with open(full_file_path, 'rb') as file_to_hash:
-                raw_file = file_to_hash.read()
-                md5 = hashlib.md5(raw_file).hexdigest()
+    # skip game if metadata exists
+    if os.path.isfile(metadata_file):
+        print("\tSkipped!! Metadata exists already.")
+        continue
 
-                print("\tMD5: " + md5 + "\tFile: " + file)
+    with open(metadata_file, "w") as text_file:
+        text_file.write(game + "\n")
+
+        for file in os.listdir(os.path.join(start_path, game)):
+            # skip the newly created file
+            if file == "game.ogxc":
+                continue
+
+            full_game_file_path = os.path.join(start_path, game, file)
+
+            if os.path.isfile(full_game_file_path): # don't take subdirs
+                with open(full_game_file_path, 'rb') as file_to_hash:
+                    raw_file = file_to_hash.read()
+                    md5 = hashlib.md5(raw_file).hexdigest()
+                    text_file.write(md5 + " " +  file + "\n")
+                    print("\tMD5: " + md5 + "\tFile: " + file)
+
+    # before moving on, calculate the md5 of the metadata file itself
+    with open(metadata_file, 'rb') as file_to_hash:
+        raw_file = file_to_hash.read()
+        md5 = hashlib.md5(raw_file).hexdigest()
+        with open(meta_metadata_file, "w") as meta_text_file:
+            meta_text_file.write(md5 + " " +  "game.ogxc\n")
+            print("\tMD5: " + md5 + "\tFile: game.ogxc")

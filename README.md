@@ -6,11 +6,11 @@ Built using the [NXDK](https://github.com/XboxDev/nxdk) toolchain, it uses no pr
 ![current_status](https://raw.githubusercontent.com/tegan-lamoureux/ogx-cloud/refs/heads/main/graphics/current_status_screenshot.png "screenshot")  
 
 ## What is it?
-A game library manager that allows you to sync games from your remote / cloud server to your (modded) OG Xbox's hard drive, with Xbox-local data integrity verification using MD5 hashes from the server.  
+A game library manager that allows you to sync games from your remote server (ex: seedbox, local NAS, AWS storage) to your modded original Xbox's hard drive, with Xbox-local data integrity verification using MD5 hashes from the server.  
 
-The server must have FTP access enabled, and a formatted library (each game in its own folder, with a ogxc config file). A formatting script in `tools/server_format` can do this for you! The config file just contains a metadata tag for the library, a list of files in the game directory, and their corresponding MD5 hash.
+It also includes a server setup / metadata creation script (`tools/server_format`) to generate the required hashes and tags your server library needs for compatibility.
 
-It's mostly just a passion project of mine.
+The server must have FTP access enabled, and a formatted library (each game in its own folder, with a ogxc config file - created with the above tool). The config file just contains a metadata tag for the library, a list of files in the game directory, and their corresponding MD5 hash. See the `tools/` directory for more information.
 
 Modded Xbox?? In 2025? Yes. :)  
 See: 
@@ -22,6 +22,8 @@ See:
 
 ## What is the current state?
 Garbage lol. It connects to a remote FTP server and lists the files / directories. Renders a static background, and can draw text. Development is ongoing.
+
+Edit - Getting there! Server side setup and metadata creation is working, UI has a functional on screen keyboard. :)
 
 ## What technologies does it use?
 [NXDK](https://github.com/XboxDev/nxdk), and a forked (and modified + extended) version of a lightweight FTP client built for LWIP. 
@@ -47,5 +49,5 @@ Example:
 - [ ] Update / finalize changes to FTP client to handle needs (dir list, download large multi-chunk files)  
 - [X] Graphical UI  
 - [ ] On screen keyboard  
-- [ ] MD5 library  
+- [X] MD5 library (server metadata tool) 
 - [ ] NXDK CI, build binary/iso on release tags  

@@ -41,9 +41,7 @@ This is just because I am lazy, feel free to make a PR to expand it :)
 
 ### Metadata Format
 
-TBD, the tool isn't finished yet :D (These are mostly dev notes for myself, for now.)
-
-It will be two ascii text files, with the first line being the folder name (game name), and the rest being a line-by-line list of files and their corresponding hashes. There will be a second file, containing only the hash of the completed config file. 
+There are two ascii text files. In the first one,  with the first line being the folder name (game name), and the rest being a line-by-line list of files and their corresponding hashes. There will be a second file, containing only the hash of the completed config file. 
 
 game.ogxc:  
 ````
@@ -66,11 +64,6 @@ I will build metadata tags in the following library directory, is this what you 
 /home/tegan/test
 [y/N] y
 
-Processing: AMPED - FREESTYLE SNOWBOARDING (USA)
-        MD5: b5d331ded49c4716c4f2542db3422fe5   File: default.tbn
-        MD5: b942049048a6c2b788da2527bbe29965   File: AMPED - FREESTYLE SNOWBOARDING (USA).cci
-        MD5: 0c2f751f63d33f1a99df8ed11a07a3ae   File: default.xbe
-Processing: .config
 Processing: THE ELDER SCROLLS III - M.G.O.T.Y (USA)
         MD5: f461fa010e23cfd92e0359e36e4c5a2a   File: default.tbn
         MD5: c880b7e200986583b71ec6a2784a10fb   File: default.xbe
@@ -79,8 +72,4 @@ Processing: JSRF - JET SET RADIO FUTURE (USA)
         MD5: f98135990501d1b18da102cb0c286416   File: JSRF - JET SET RADIO FUTURE (USA).cci
         MD5: 9e9ea8a46808846756cb52665320152b   File: default.tbn
         MD5: 9b81d60cd3bc8a27b0920ed1689a3cc2   File: default.xbe
-Processing: STAR WARS - K.O.T.O.R (USA)
-        MD5: 0c7b11bef8b8862956e3cca4ce7adf9e   File: default.tbn
-        MD5: 1e57370dba6a42185a35f48e86279720   File: STAR WARS - K.O.T.O.R (USA).cci
-        MD5: 814298b215df0a79ecd0db338df02fbd   File: default.xbe
 ````
